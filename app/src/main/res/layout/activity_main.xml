@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- Button 1 -->
+        <Button
+            android:id="@+id/Popular_People"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#009688"
+            android:text="Popular People"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/Popular_TV_Show"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="1" />
+
+        <!-- Button 2 -->
+        <Button
+            android:id="@+id/Popular_TV_Show"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="30dp"
+            android:backgroundTint="#3F51B5"
+            android:text="Popular TV Show"
+            app:layout_constraintBottom_toTopOf="@+id/Popular_Movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Popular_People"
+            app:layout_constraintVertical_weight="1" />
+        <!-- Button 3 -->
+        <Button
+            android:id="@+id/Popular_Movie"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Popular Movie"
+            android:onClick="movies"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Popular_TV_Show"
+            app:layout_constraintVertical_weight="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
+
