@@ -15,11 +15,11 @@ class PopularMoviesRepository(private val apiKey:String) {
         call.enqueue(object :Callback<PopularMovies_Response>{
             override fun onResponse(call: Call<PopularMovies_Response>, response: Response<PopularMovies_Response>) {
                 if(response.isSuccessful){
+
                     val body = response.body()
                     Log.d(TAG, "onResponse: $body")
                 }
             }
-
             override fun onFailure(call: Call<PopularMovies_Response>, t: Throwable) {
                 Log.d(TAG,"on Failure ${t.message} ")
             }
