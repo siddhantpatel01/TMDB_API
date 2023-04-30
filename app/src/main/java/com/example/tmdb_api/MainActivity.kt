@@ -12,11 +12,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-
     }
 
     fun movies(view: View) {
-        startActivity(Intent(this,TMDB_DATA_Display_Activity::class.java))
+        startActivity(Intent(this, TMDB_DATA_Display_Activity::class.java))
+    }
+
+    fun TVSHOW(view: View) {
+        startActivity(Intent(this, Person_data::class.java))
     }
 }

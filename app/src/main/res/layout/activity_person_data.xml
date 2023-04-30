@@ -13,7 +13,7 @@
         tools:context=".TMDB_DATA_Display_Activity">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_View_Movie"
+            android:id="@+id/person_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"

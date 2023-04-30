@@ -8,7 +8,6 @@ private const val baseurl = "https://api.themoviedb.org/"
 object TMDB_RetroFit_Client {
     val retofitClient: Retrofit.Builder by lazy {
 
-
         Retrofit.Builder()
             .baseUrl(baseurl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
@@ -16,4 +15,9 @@ object TMDB_RetroFit_Client {
     val apiinterface:Popular_Movies_Api by lazy {
         retofitClient.build().create(Popular_Movies_Api::class.java)
     }
+
+    val apiinterface_person:Popular_TVSHOW_Api by lazy {
+        retofitClient.build().create(Popular_TVSHOW_Api::class.java)
+    }
 }
+

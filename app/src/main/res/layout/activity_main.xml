@@ -32,6 +32,7 @@
             android:textSize="30dp"
             android:backgroundTint="#3F51B5"
             android:text="Popular TV Show"
+            android:onClick="TVSHOW"
             app:layout_constraintBottom_toTopOf="@+id/Popular_Movie"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
