@@ -10,11 +10,16 @@ import com.bumptech.glide.Glide
 import com.example.tmdb_api.Model.PopularMovies_Model
 import com.example.tmdb_api.R
 import com.example.tmdb_api.databinding.PopularMovieDataLayoutBinding
+import com.example.tmdb_api.recycler_view_listner
 
-class Movie_Data_RecyclerView_Adapter(private val movielist: List<PopularMovies_Model>, private var context: Context
-) : RecyclerView.Adapter<Movie_Data_RecyclerView_Adapter.MovieDataViewHolder>() {
-    inner class MovieDataViewHolder(var binding: PopularMovieDataLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root)
+class Movie_Data_RecyclerView_Adapter(private val movielist: List<PopularMovies_Model>,
+                                      private var context: Context
+) : RecyclerView.Adapter<Movie_Data_RecyclerView_Adapter.MovieDataViewHolder>()  {
+
+
+    private lateinit var onItemClickListener: recycler_view_listner
+
+    inner class MovieDataViewHolder(var binding: PopularMovieDataLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieDataViewHolder {
         var view: View? = LayoutInflater.from(parent.context)
@@ -39,6 +44,22 @@ class Movie_Data_RecyclerView_Adapter(private val movielist: List<PopularMovies_
                 .placeholder(R.drawable.baseline_person_24)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(movieImageView)
+
+
+            holder.itemView.setOnClickListener() {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(position)
+                }
+            }
+
+
+
         }
+    }
+
+
+
+    fun setOnItemClickListener(onItemClickListener: recycler_view_listner) {
+        this.onItemClickListener = onItemClickListener
     }
 }

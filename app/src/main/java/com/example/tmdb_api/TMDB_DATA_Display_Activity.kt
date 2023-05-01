@@ -1,15 +1,16 @@
-package com.example.tmdb_api
+﻿package com.example.tmdb_api
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb_api.Adapter_TMDB.Movie_Data_RecyclerView_Adapter
 import com.example.tmdb_api.Factory.TMDB_Factory
+import com.example.tmdb_api.Model.PopularMovies_Model
 import com.example.tmdb_api.Repository.PopularMoviesRepository
 import com.example.tmdb_api.RoomDB.MovieDatabase
 import com.example.tmdb_api.ViewModel.TMDB_ViewModel
@@ -18,7 +19,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TMDB_DATA_Display_Activity : AppCompatActivity() {
+class TMDB_DATA_Display_Activity : AppCompatActivity(), recycler_view_listner {
     lateinit var binding: ActivityTmdbDataDisplayBinding
 
     lateinit var factory: TMDB_Factory
@@ -38,17 +39,14 @@ class TMDB_DATA_Display_Activity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)[TMDB_ViewModel::class.java]
         binding.lifecycleOwner = this
 
+        //adapter.setOnItemClickListener(this)
       //  binding.recyclerViewMovie.layoutManager = LinearLayoutManager(this)
 
         binding.recyclerViewMovie.layoutManager = GridLayoutManager(this, 2)
         binding.recyclerViewMovie.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
-//        viewModel.getPopularMovie().observe(this) {
-//            adapter = Movie_Data_RecyclerView_Adapter(it, this)
-//            binding.recyclerViewMovie.adapter = adapter
-//            adapter.notifyDataSetChanged()
-//        }
-       CoroutineScope(Dispatchers.Main).launch {
+
+        CoroutineScope(Dispatchers.Main).launch {
            viewModel.getMovie().observe(this@TMDB_DATA_Display_Activity) {
             adapter = Movie_Data_RecyclerView_Adapter(it, this@TMDB_DATA_Display_Activity)
             binding.recyclerViewMovie.adapter = adapter
@@ -57,4 +55,10 @@ class TMDB_DATA_Display_Activity : AppCompatActivity() {
        }
 
     }
+
+    override fun onItemClick(position: Int) {
+        Toast.makeText(this, "clicked $position", Toast.LENGTH_SHORT).show()
+    }
+
+
 }

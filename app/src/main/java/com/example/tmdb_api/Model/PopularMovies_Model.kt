@@ -15,5 +15,4 @@ data class PopularMovies_Model(
     var release_date : String = "",
     var vote_average : String = "",
     var vote_count : String = ""
-
 )

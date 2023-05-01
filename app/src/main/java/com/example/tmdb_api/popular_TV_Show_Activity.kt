@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb_api.Adapter_TMDB.Popular_TVSHOW_Recycler_View_Adapter
 import com.example.tmdb_api.Factory.Popular_TVSHOW_Factory
 import com.example.tmdb_api.Repository.Popular_TVSHOW_Repository
@@ -27,10 +29,10 @@ class popular_TV_Show_Activity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-        binding.tvshowRecyclerview.layoutManager = LinearLayoutManager(this)
+        //binding.tvshowRecyclerview.layoutManager = LinearLayoutManager(this)
 
-//        binding.personRecyclerview.layoutManager = GridLayoutManager(this, 2)
-//        binding.personRecyclerview.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        binding.tvshowRecyclerview.layoutManager = GridLayoutManager(this, 2)
+        binding.tvshowRecyclerview.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
         viewModel.getPopularPerson().observe(this) {
             adapter2 = Popular_TVSHOW_Recycler_View_Adapter(it, this)
