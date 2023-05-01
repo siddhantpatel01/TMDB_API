@@ -13,11 +13,11 @@ import com.example.tmdb_api.databinding.PopularMovieDataLayoutBinding
 import com.example.tmdb_api.recycler_view_listner
 
 class Movie_Data_RecyclerView_Adapter(private val movielist: List<PopularMovies_Model>,
-                                      private var context: Context
+                                      private var context: Context,private val onItemClickListener:recycler_view_listner
 ) : RecyclerView.Adapter<Movie_Data_RecyclerView_Adapter.MovieDataViewHolder>()  {
 
 
-    private lateinit var onItemClickListener: recycler_view_listner
+   // private lateinit var onItemClickListener: recycler_view_listner
 
     inner class MovieDataViewHolder(var binding: PopularMovieDataLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -48,7 +48,7 @@ class Movie_Data_RecyclerView_Adapter(private val movielist: List<PopularMovies_
 
             holder.itemView.setOnClickListener() {
                 if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(position)
+                    onItemClickListener.onItemClick(position,movielist[position])
                 }
             }
 
@@ -58,8 +58,4 @@ class Movie_Data_RecyclerView_Adapter(private val movielist: List<PopularMovies_
     }
 
 
-
-    fun setOnItemClickListener(onItemClickListener: recycler_view_listner) {
-        this.onItemClickListener = onItemClickListener
-    }
 }

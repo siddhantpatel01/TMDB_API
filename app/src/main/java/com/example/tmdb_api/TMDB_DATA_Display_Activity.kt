@@ -1,5 +1,6 @@
 ﻿package com.example.tmdb_api
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,14 +16,16 @@ import com.example.tmdb_api.Repository.PopularMoviesRepository
 import com.example.tmdb_api.RoomDB.MovieDatabase
 import com.example.tmdb_api.ViewModel.TMDB_ViewModel
 import com.example.tmdb_api.databinding.ActivityTmdbDataDisplayBinding
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TMDB_DATA_Display_Activity : AppCompatActivity(), recycler_view_listner {
+class TMDB_DATA_Display_Activity : AppCompatActivity(){
     lateinit var binding: ActivityTmdbDataDisplayBinding
 
     lateinit var factory: TMDB_Factory
+    var Positions: Int = 0
     lateinit var viewModel: TMDB_ViewModel
     lateinit var adapter: Movie_Data_RecyclerView_Adapter
 
@@ -48,7 +51,19 @@ class TMDB_DATA_Display_Activity : AppCompatActivity(), recycler_view_listner {
 
         CoroutineScope(Dispatchers.Main).launch {
            viewModel.getMovie().observe(this@TMDB_DATA_Display_Activity) {
-            adapter = Movie_Data_RecyclerView_Adapter(it, this@TMDB_DATA_Display_Activity)
+            adapter = Movie_Data_RecyclerView_Adapter(it, this@TMDB_DATA_Display_Activity,object :recycler_view_listner{
+                override fun onItemClick(position: Int, moviesModel: PopularMovies_Model) {
+                    Toast.makeText(this@TMDB_DATA_Display_Activity, "chicked $position", Toast.LENGTH_SHORT).show()
+                   // startActivity(Intent(this@TMDB_DATA_Display_Activity,movie_details_Activity::class.java))
+                    Positions = position
+                    val singleStudent= moviesModel
+                    val intent = Intent(this@TMDB_DATA_Display_Activity,movie_details_Activity::class.java)
+                    intent.putExtra(Keys.movieobject, Gson().toJson(singleStudent))
+                    startActivity(intent)
+
+                }
+
+            })
             binding.recyclerViewMovie.adapter = adapter
 
         }
@@ -56,9 +71,6 @@ class TMDB_DATA_Display_Activity : AppCompatActivity(), recycler_view_listner {
 
     }
 
-    override fun onItemClick(position: Int) {
-        Toast.makeText(this, "clicked $position", Toast.LENGTH_SHORT).show()
-    }
 
 
 }
