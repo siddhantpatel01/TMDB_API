@@ -35,7 +35,10 @@ class Movie_Data_RecyclerView_Adapter(private val movielist: List<PopularMovies_
             var movieposter = movie.poster_path
             val urlpath = "https://image.tmdb.org/t/p/w500//${movieposter}"
             movieTextView.text = movietitle
-            Glide.with(context).load(urlpath).into(movieImageView)
+            Glide.with(context).load(urlpath)
+                .placeholder(R.drawable.baseline_person_24)
+                .error(R.drawable.ic_launcher_foreground)
+                .into(movieImageView)
         }
     }
 }

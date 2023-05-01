@@ -10,4 +10,7 @@ class TMDB_ViewModel(private val popularMoviesRepository: PopularMoviesRepositor
         return popularMoviesRepository.getPopularMovie()
     }
 
+    suspend fun getMovie() : LiveData<List<PopularMovies_Model>>{
+        return popularMoviesRepository.getmovie()
+    }
 }

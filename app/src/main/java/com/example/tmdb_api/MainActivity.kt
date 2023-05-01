@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun TVSHOW(view: View) {
-        startActivity(Intent(this, Person_data::class.java))
+        startActivity(Intent(this, popular_TV_Show_Activity::class.java))
+    }
+
+    fun popular_Person(view: View) {
+        startActivity(Intent(this, Popular_Person_Activity::class.java))
     }
 }

@@ -16,8 +16,12 @@ object TMDB_RetroFit_Client {
         retofitClient.build().create(Popular_Movies_Api::class.java)
     }
 
-    val apiinterface_person:Popular_TVSHOW_Api by lazy {
+    val apiinterface_tvShow:Popular_TVSHOW_Api by lazy {
         retofitClient.build().create(Popular_TVSHOW_Api::class.java)
+    }
+
+    val apiinterface_person:Popular_Person_Api by lazy {
+        retofitClient.build().create(Popular_Person_Api::class.java)
     }
 }
 

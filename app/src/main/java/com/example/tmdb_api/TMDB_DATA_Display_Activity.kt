@@ -1,7 +1,7 @@
 package com.example.tmdb_api
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb_api.Adapter_TMDB.Movie_Data_RecyclerView_Adapter
 import com.example.tmdb_api.Factory.TMDB_Factory
 import com.example.tmdb_api.Repository.PopularMoviesRepository
-
+import com.example.tmdb_api.RoomDB.MovieDatabase
 import com.example.tmdb_api.ViewModel.TMDB_ViewModel
 import com.example.tmdb_api.databinding.ActivityTmdbDataDisplayBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class TMDB_DATA_Display_Activity : AppCompatActivity() {
     lateinit var binding: ActivityTmdbDataDisplayBinding
@@ -24,23 +27,34 @@ class TMDB_DATA_Display_Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       binding = DataBindingUtil.setContentView(this , R.layout.activity_tmdb_data_display)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_tmdb_data_display)
 
-       factory = TMDB_Factory(PopularMoviesRepository("4da2ce878649bbad5b1ad09442ef2095")
-       )
-       viewModel = ViewModelProvider(this, factory)[TMDB_ViewModel::class.java]
-       binding.lifecycleOwner = this
+        factory = TMDB_Factory(
+            PopularMoviesRepository(
+                "4da2ce878649bbad5b1ad09442ef2095",
+                MovieDatabase.getDatabase(this).getmovieDao()
+            )
+        )
+        viewModel = ViewModelProvider(this, factory)[TMDB_ViewModel::class.java]
+        binding.lifecycleOwner = this
 
-        //binding.recyclerViewMovie.layoutManager = LinearLayoutManager(this)
+      //  binding.recyclerViewMovie.layoutManager = LinearLayoutManager(this)
 
         binding.recyclerViewMovie.layoutManager = GridLayoutManager(this, 2)
         binding.recyclerViewMovie.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
-        viewModel.getPopularMovie().observe(this) {
-            adapter = Movie_Data_RecyclerView_Adapter(it, this)
+//        viewModel.getPopularMovie().observe(this) {
+//            adapter = Movie_Data_RecyclerView_Adapter(it, this)
+//            binding.recyclerViewMovie.adapter = adapter
+//            adapter.notifyDataSetChanged()
+//        }
+       CoroutineScope(Dispatchers.Main).launch {
+           viewModel.getMovie().observe(this@TMDB_DATA_Display_Activity) {
+            adapter = Movie_Data_RecyclerView_Adapter(it, this@TMDB_DATA_Display_Activity)
             binding.recyclerViewMovie.adapter = adapter
-            adapter.notifyDataSetChanged()
+
         }
+       }
 
     }
 }
