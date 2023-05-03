@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb_api.Adapter_TMDB.Popular_Person_RecyclerView_Adapter
 import com.example.tmdb_api.Adapter_TMDB.Popular_TVSHOW_Recycler_View_Adapter
 import com.example.tmdb_api.Factory.Popular_Person_Factory
@@ -32,7 +34,10 @@ class Popular_Person_Activity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-        binding.personRecyclerview.layoutManager = LinearLayoutManager(this)
+//        binding.personRecyclerview.layoutManager = LinearLayoutManager(this)
+
+        binding.personRecyclerview.layoutManager = GridLayoutManager(this, 2)
+        binding.personRecyclerview.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
         viewModel.getPopularperson().observe(this) {
             adapter3 = Popular_Person_RecyclerView_Adapter(it, this)

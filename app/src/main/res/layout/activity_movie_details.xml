@@ -5,107 +5,119 @@
     <data>
 
     </data>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/movie_imageView_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:backgroundTint="#C1C1C1"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:padding="10dp">
 
-            android:id="@+id/poster_layout"
-            app:cardCornerRadius="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                app:cardCornerRadius="25dp"
+                android:id="@+id/poster_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/poster"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:shadowRadius="50"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></ImageView>
 
-                ></ImageView>
 
-        </com.google.android.material.card.MaterialCardView>
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
-            android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/poster_layout"
-            android:layout_marginTop="10dp"
-            android:hint="title"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/poster_layout"
+                android:layout_marginTop="10dp"
+                android:hint="title"
 
-            ></TextView>
+                ></TextView>
 
-        <TextView
+            <TextView
 
-            android:id="@+id/originallanguage"
-            android:layout_width="match_parent"
-            android:textStyle="bold"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            android:layout_marginTop="10dp"
-            android:hint="title"
-            ></TextView>
+                android:id="@+id/originallanguage"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                android:layout_marginTop="10dp"
+                android:hint="title"
+                ></TextView>
 
-        <TextView
+            <TextView
 
-            android:id="@+id/popularitys"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/originallanguage"
-            android:layout_marginTop="10dp"
-            android:hint="title"
-            ></TextView>
+                android:id="@+id/popularitys"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/originallanguage"
+                android:layout_marginTop="10dp"
+                android:hint="title"
+                ></TextView>
 
-        <TextView
+            <TextView
 
-            android:id="@+id/release_dates"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/popularitys"
-            android:layout_marginTop="10dp"
-            android:hint="title"
-            ></TextView>
+                android:id="@+id/release_dates"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/popularitys"
+                android:layout_marginTop="10dp"
+                android:hint="title"
+                ></TextView>
 
-        <TextView
+            <TextView
 
-            android:id="@+id/vote_averages"
-            android:layout_width="match_parent"
-            android:textStyle="bold"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/release_dates"
-            android:layout_marginTop="10dp"
-            android:hint="title"
-            ></TextView>
+                android:id="@+id/vote_averages"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/release_dates"
+                android:layout_marginTop="10dp"
+                android:hint="title"
+                ></TextView>
 
-        <TextView
+            <TextView
 
-            android:id="@+id/vote_count"
-            android:layout_width="match_parent"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/vote_averages"
-            android:layout_marginTop="10dp"
-            android:hint="title"
-            ></TextView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:id="@+id/vote_count"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/vote_averages"
+                android:layout_marginTop="10dp"
+                android:hint="title"
+                ></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </layout>

@@ -38,12 +38,19 @@ class movie_details_Activity : AppCompatActivity() {
             .into(binding.poster)
 
 
-        binding.title.text = student.title
-        binding.originallanguage.text = student.original_language
-        binding.popularitys.text = student.popularity
-        binding.releaseDates.text = student.release_date
-        binding.voteAverages.text = student.vote_average
-        binding.voteCount.text = student.vote_count
+        var movieName = student.title
+        var movie_Language = student.original_language
+        var popularity = student.popularity
+        var releaseDate = student.release_date
+        var voteAverages = student.vote_average
+        var votecount  = student.vote_count
+        binding.title.text = "Movie Name :  $movieName"
+        binding.originallanguage.text = "Language : $movie_Language"
+        binding.popularitys.text = "Popularity : $popularity"
+        binding.releaseDates.text = "Release Date : $releaseDate"
+        binding.voteAverages.text = "Rating : $voteAverages"
+        binding.voteCount.text = "Vote : $votecount"
+
 
 
     }

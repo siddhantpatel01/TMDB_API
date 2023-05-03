@@ -32,8 +32,8 @@ class Popular_Person_RecyclerView_Adapter(private val personlist: List<Popular_P
         val person = personlist[position]
 
         holder.binding.apply {
-            var persontitle = person.title
-            var personposter = person.poster_path
+            var persontitle = person.name
+            var personposter = person.profile_path
             val urlpath = "https://image.tmdb.org/t/p/w500/${personposter}"
             personTextView.text = persontitle
             Glide.with(context).load(urlpath).into(personImageView)

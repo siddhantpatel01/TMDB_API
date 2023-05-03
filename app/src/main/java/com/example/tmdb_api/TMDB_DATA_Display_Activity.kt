@@ -45,7 +45,7 @@ class TMDB_DATA_Display_Activity : AppCompatActivity(){
         //adapter.setOnItemClickListener(this)
       //  binding.recyclerViewMovie.layoutManager = LinearLayoutManager(this)
 
-        binding.recyclerViewMovie.layoutManager = GridLayoutManager(this, 2)
+       // binding.recyclerViewMovie.layoutManager = GridLayoutManager(this, 2)
         binding.recyclerViewMovie.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
 
