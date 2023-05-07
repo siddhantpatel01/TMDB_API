@@ -66,9 +66,9 @@ class TMDB_DATA_Display_Activity : AppCompatActivity(){
             })
             binding.recyclerViewMovie.adapter = adapter
 
+
         }
        }
-
     }
 
 

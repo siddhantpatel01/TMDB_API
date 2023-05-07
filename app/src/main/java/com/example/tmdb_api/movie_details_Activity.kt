@@ -1,19 +1,18 @@
 package com.example.tmdb_api
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.tmdb_api.Factory.TMDB_Factory
 import com.example.tmdb_api.Model.PopularMovies_Model
 import com.example.tmdb_api.Repository.PopularMoviesRepository
-import com.example.tmdb_api.RoomDB.Dao_movie_data_Api
 import com.example.tmdb_api.RoomDB.MovieDatabase
 import com.example.tmdb_api.ViewModel.TMDB_ViewModel
 import com.example.tmdb_api.databinding.ActivityMovieDetailsBinding
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
+
 
 class movie_details_Activity : AppCompatActivity() {
 
@@ -52,6 +51,7 @@ class movie_details_Activity : AppCompatActivity() {
         binding.voteCount.text = "Vote : $votecount"
 
 
-
     }
+
+
 }
