@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,8 +46,8 @@ class TMDB_DATA_Display_Activity : AppCompatActivity(){
         //adapter.setOnItemClickListener(this)
       //  binding.recyclerViewMovie.layoutManager = LinearLayoutManager(this)
 
-       // binding.recyclerViewMovie.layoutManager = GridLayoutManager(this, 2)
-        binding.recyclerViewMovie.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        binding.recyclerViewMovie.layoutManager = GridLayoutManager(this, 2)
+       // binding.recyclerViewMovie.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
 
         CoroutineScope(Dispatchers.Main).launch {
@@ -69,6 +70,7 @@ class TMDB_DATA_Display_Activity : AppCompatActivity(){
 
         }
        }
+
     }
 
 

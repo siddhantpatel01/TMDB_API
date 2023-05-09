@@ -37,7 +37,7 @@ class Popular_Person_Activity : AppCompatActivity() {
 //        binding.personRecyclerview.layoutManager = LinearLayoutManager(this)
 
         binding.personRecyclerview.layoutManager = GridLayoutManager(this, 2)
-        binding.personRecyclerview.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        //binding.personRecyclerview.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
         viewModel.getPopularperson().observe(this) {
             adapter3 = Popular_Person_RecyclerView_Adapter(it, this)

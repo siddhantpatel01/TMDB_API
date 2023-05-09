@@ -32,7 +32,7 @@ class popular_TV_Show_Activity : AppCompatActivity() {
         //binding.tvshowRecyclerview.layoutManager = LinearLayoutManager(this)
 
         binding.tvshowRecyclerview.layoutManager = GridLayoutManager(this, 2)
-        binding.tvshowRecyclerview.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+      //  binding.tvshowRecyclerview.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
 
         viewModel.getPopularPerson().observe(this) {
             adapter2 = Popular_TVSHOW_Recycler_View_Adapter(it, this)
